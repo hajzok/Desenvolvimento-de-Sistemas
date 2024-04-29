@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+<meta charset='UTF=8'>
+<title> Informática </title>
+</head>
+<body>
+<TABLE BORDER=1 BGCOLOR="blue" width="100%">
+<TH> <FONT color="white"> Cadastro de Conselhos </FONT> </TH>
+</TABLE>
+<FORM NAME="form_conselho" METHOD="POST">
+<H4> Programa </H4>
+<TABLE WIDTH="100%">
+<TR>
+<TD WIDTH="15%"> <FONT SIZE="3" FACE="arial"> Unidade </FONT> </TD>
+<TD> <INPUT TYPE="text" name="codUnidade" size="5"> </TD>
+<TD> <INPUT TYPE="text" name="unidade" size="80"> </TD>
+</TR>
+<TR>
+<TD WIDTH="15%"> <FONT SIZE="3" FACE="arial"> Programa </FONT> </TD>
+<TD> <INPUT TYPE="text" name="codPrograma" size="5"> </TD>
+<TD> <INPUT TYPE="text" name="programa" size="80"> </TD>
+</TR>
+</TABLE>
+<H4> Conselho de Programa de Pós-Graduação </H4>
+<TABLE WIDTH="100%">
+<TR>
+<TD WIDTH="15%"> <FONT SIZE="3" FACE="arial"> Código </FONT> </TD>
+<TD> <INPUT TYPE="text" name="codigo" size="5"> </TD>
+</TR>
+<TR>
+<TD WIDTH="15%"> <FONT SIZE="3" FACE="arial"> Nome </FONT> </TD>
+<TD> <INPUT TYPE="text" name="nome" size="100"> </TD>
+</TR>
+<TR>
+<TD WIDTH="15%"> <FONT SIZE="3" FACE="arial"> Tipo </FONT> </TD>
+<TD>
+<select name="tipo">
+<option>
+<option value="1"> COMISSOES TRANSITORIAS DE ESTUDOS
+<option value="2"> CONSELHOS DE DEPARTAMENTO
+<option value="3"> COMISSOES PERMANENTES DE UNIDADE ADMINISTRATIVA
+</select>
+</TD>
+</TR>
+<TR>
+<TD WIDTH="15%"> <FONT size="3" face="arial"> Fundamento </FONT> </TD>
+<TD>
+<TEXTAREA NAME="fundamento" COLS=50 ROWS=3> </TEXTAREA>
+</TD>
+</TR>
+<TR>
+<TD ALIGN="center" colspan="2">
+<INPUT TYPE="SUBMIT" VALUE="Salvar">
+</TD>
+</TR>
+</TABLE>
+</FORM>
+</body>
+</html>

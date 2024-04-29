@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+<meta charset='UTF=8'>
+<title> Frame 1 Scrolling </title>
+</head>
+<FRAMESET COLS="20%,30%,50%">
+<FRAME SRC="Frame1.html" SCROLLING = "no">
+<FRAME SRC="Frame1.html" SCROLLING = "yes">
+<FRAME SRC="Frame1.html" SCROLLING = "auto">
+</FRAMESET>
+<html>

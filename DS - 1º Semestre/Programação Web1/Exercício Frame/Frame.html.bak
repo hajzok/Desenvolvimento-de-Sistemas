@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+<meta charset='UTF-8'>
+<title> Informática </title>
+</head>
+<FRAMESET COLS="20%, 70%" ROWS="10%">
+<FRAME SRC="menu.html" NORESIZE>
+<FRAME SRC="principal.html" NORESIZE NAME="Principal">
+<FRAME SRC="rodapé.html" NORESIZE>
+</FRAMESET>
+<html>

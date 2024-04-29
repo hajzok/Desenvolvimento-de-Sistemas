@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+<meta charset='UTF-8'>
+		<link rel="stylesheet" href="meu.css">
+		<style>
+			
+			input, button{
+				margin:10px;
+				width:500px;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+<br>
+		<CENTER><H1> Bem vindo, digite abaixo as informações para fazer a consulta sobre o IMC: </H1></CENTER>
+<br>
+		
+		<PRE> 						     Digite a altura:</PRE>
+		<CENTER>
+			<input id="n1" type="number" value="" placeholder="Ex.:1,75"> <br>
+		</CENTER>
+			<PRE> 						     Digite o peso:</PRE>
+		<CENTER>
+			<input id="n2" type="number" value="" placeholder="Ex.:65,9"> <br><br>
+			<button onclick="calcular()">Calcular</button>
+			<br>
+			<input type="number" id="n3" placeholder="Índice de Massa Corpórea" readonly>
+		</CENTER>
+			<br>
+			<PRE> 						     Situação do Paciente:</PRE>
+		<CENTER>
+			<input id="n4" readonly>
+		</CENTER>
+		
+			
+		<script src="java.js"></script>
+	</body>
+</html>

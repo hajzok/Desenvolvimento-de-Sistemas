@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+<meta charset='UTF-8'>
+<title> Sobre mim </title>
+</head>
+<body>
+<center> <FONT size="4" face="Arial Black" color="black">
+Olá meu nome é Vitor mas para os mais íntimos "Vitão" rsrs
+</FONT> </center>
+<br><br>
+<HR width="100%" align="center" size="2" color="blue">
+<br><br>
+<FONT size="3" face="Arial Black" color="black">
+Conheça um pouco sobre mim:
+</FONT>
+<br><br><br>
+<IMG SRC="hajzok.jpg" WIDTH="15%" HEIGHT="15%" ALIGN="left">
+</body>
+</html>

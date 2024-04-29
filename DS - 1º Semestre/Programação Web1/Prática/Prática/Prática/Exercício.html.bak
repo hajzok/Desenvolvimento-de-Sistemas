@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+<meta charset='UTF-8'>
+<title> Informática </title>
+</head>
+<body>
+<H3> <CENTER> Sistema de Órgãos Colegiados </CENTER> </H3>
+<HR WIDTH="100%" ALIGN="center" SIZE="2" COLOR="gray">
+<FONT size="3" face="Arial" color="blue"> Cursos de Graduação
+</FONT>
+<br>
+<B>
+<FONT size="3" face="Arial" color="green"> Cursos de Pós-Graduação
+</FONT>
+</B>
+<br>
+<I>
+<FONT size="3" face="Arial" color="orange"> Mestrado
+</FONT>
+</I>
+<br>
+<U>
+<FONT size="3" face="Arial" color="red"> Doutorado
+</FONT>
+</U>
+<PRE> 
+<FONT size="3" face="Arial" color="Magenta">
+		Está é
+			a primeira
+		aula de
+			HTML
+</FONT>

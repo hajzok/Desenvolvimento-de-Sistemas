@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+<meta charset='UTF-8'>
+<title> Informática </title>
+</head>
+<body bgcolor="LightCyan">
+<H1> <FONT face="arial" color="orange"> MENU </FONT> </H1>
+<HR width="100%" align="left" size="4" color="green">
+<br><br>
+<a href= "estilo de texto.html"> Estilo de Textos </A>
+<br><br>
+<a href= "fontes.html"> Fontes </A>
+<br><br>
+<a href= "linha horizontal.html"> Linhas Horizontais </A>
+<br><br>
+<a href= "tamanhos.html"> Tamanhos </A>
+<br><br>
+<a href= "imagem.html"> Imagem </A>
+<br><br>
+<a href= "meusite.html"> MeuSite </A>
+<br><br>
+<a href=https://www.uol.com.br> Site da Uol </A>
+<br><br>
+<a href=https://www.etecbauru.com.br> Site da Etec Bauru </A>
+<br><br><br>
+<HR width="100%" align="left" size="4" color="green">
+</body>
+</html>
