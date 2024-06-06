@@ -4,8 +4,8 @@ import estilo from './estilo';
 
 export default function ItemLista(props) {
   return (
-    <View style={estilo.boxSigno}>
-      <Text style={estilo.nomeSigno}>
+    <View style={estilo.boxEstados}>
+      <Text style={estilo.nomeEstados}>
         {props.signo}
       </Text>
 

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const estilo = StyleSheet.create({
  lista: {
-   padding: 10,
+   padding: 15,
    marginBottom: 60,
  }
 });

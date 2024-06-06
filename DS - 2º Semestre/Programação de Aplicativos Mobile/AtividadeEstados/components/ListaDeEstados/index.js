@@ -4,7 +4,7 @@ import Titulo from '../Titulo';
 import ItemLista from '../ItemLista';
 import estilo from './estilo.js';
 
-export default function ListaDeSignos() {
+export default function ListaDeEstados() {
   return (
     <View>
       <Titulo />
@@ -24,6 +24,19 @@ export default function ListaDeSignos() {
         <ItemLista Sigla="MG" Estado= "Minas Gerais" Capital="Belo Horizonte" Regiao="Sudeste"/>
         <ItemLista Sigla="PA" Estado= "Pará" Capital="Belém" Regiao="Norte"/>
         <ItemLista Sigla="PB" Estado= "Paraíba" Capital="João Pessoa" Regiao="Norte"/>
+        <ItemLista Sigla="PR" Estado= "Paraná" Capital="Curitiba" Regiao="Sul"/> 
+        <ItemLista Sigla="PE" Estado= "Pernambuco" Capital="Recife" Regiao="Nordeste"/>
+        <ItemLista Sigla="PI" Estado= "Piauí" Capital="Teresina" Regiao="Nordeste"/>
+        <ItemLista Sigla="RJ" Estado= "Rio de Janeiro" Capital="Rio de Janeiro" Regiao="Sudeste"/>
+        <ItemLista Sigla="RN" Estado= "Rio Grande do Norte" Capital="João Pessoa" Regiao="Nordeste"/>
+        <ItemLista Sigla="RS" Estado= "Rio Grande do Sul" Capital="Porto Alegre" Regiao="Sul"/>
+        <ItemLista Sigla="RO" Estado= "Rondônia" Capital="Porto Velho" Regiao="Norte"/>
+        <ItemLista Sigla="RR" Estado= "Roraima" Capital="Boa Vista" Regiao="Norte"/>
+        <ItemLista Sigla="SC" Estado= "Santa Catarina" Capital="Florianópolis" Regiao="Sul"/>
+        <ItemLista Sigla="SP" Estado= "São Paulo" Capital="São Paulo" Regiao="Centro-Oeste"/>
+        <ItemLista Sigla="SE" Estado= "Sergipe" Capital="Aracaju" Regiao="Nordeste"/>
+        <ItemLista Sigla="TO" Estado= "Tocantins" Capital="Palmas" Regiao="Norte"/>
+        <ItemLista Sigla="DF" Estado= "Destrito Federal" Capital="Brasília" Regiao="Centro-Oeste"/>
       </ScrollView>
     </View>
   )
