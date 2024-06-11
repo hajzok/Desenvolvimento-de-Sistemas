@@ -7,7 +7,15 @@ import javax.swing.table.DefaultTableModel;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+  /*BANCO DE DADOS:
+ create database banco;
+use banco;
+create table cadastro (
+	codigo int primary key,
+	nome varchar(100),
+	telefone varchar(100),
+	email varchar(100)
+);*/
 /**
  *
  * @author Aluno
