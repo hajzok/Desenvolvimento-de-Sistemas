@@ -1,6 +1,14 @@
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import com.mysql.jdbc.Connection;
+import java.awt.event.MouseEvent;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JTable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,6 +37,12 @@ public class Formulario extends javax.swing.JFrame {
         initComponents();
     }
     
+    private void Limpa(){
+        edtCodigo.setText("");
+        edtNome.setText("");
+        edtTelefone.setText("");
+        edtEmail.setText("");
+    }
     private void Lista() {
         
         
@@ -250,11 +264,8 @@ public class Formulario extends javax.swing.JFrame {
         int response = JOptionPane.showConfirmDialog(null, "Deseja limpar os dados ?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         
         if (response == JOptionPane.YES_OPTION){
-            
-            edtCodigo.setText("");
-            edtNome.setText("");
-            edtTelefone.setText("");
-            edtEmail.setText("");
+            edtCodigo.setEnabled(true);
+            this.Limpa();
         }
     }//GEN-LAST:event_btnLimparActionPerformed
 
@@ -271,45 +282,71 @@ public class Formulario extends javax.swing.JFrame {
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
         // TODO add your handling code here:
         
-        int response = JOptionPane.showConfirmDialog(null, "Deseja gravar os dados ?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int response = JOptionPane.showConfirmDialog(null, "Deseja gravar o registro ?", "Confirmação",
         
-        if (response == JOptionPane.YES_OPTION){
-            
-            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-            String linha[] = new String [4];
-            
-            linha[0] = edtCodigo.getText();
-            linha[1] = edtNome.getText();
-            linha[2] = edtTelefone.getText();
-            linha[3] = edtEmail.getText();
-            
-            modelo.addRow(linha);
-        }
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+     
+        if (response == JOptionPane.YES_OPTION) {
+        
+            try
+            {
+                Connection con=(Connection)DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root",""); 
+                Statement stmt=(Statement)con.createStatement();
+
+                String insert="INSERT INTO cadastro VALUES('"+edtCodigo.getText()+"','"+edtNome.getText()+"','"+edtTelefone.getText()+"','"+edtEmail.getText()+"');";
+                stmt.executeUpdate(insert);
+            }
+        
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage() ,"Error", 1);
+     
+            }        
+     
+        }  
+        this.Limpa();
+        this.Lista();
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
         
-        int response = JOptionPane.showConfirmDialog(null, "Deseja remover o registro ?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+         int response = JOptionPane.showConfirmDialog(null, "Deseja remover o registro ?", "Confirmação",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         
-        if (response == JOptionPane.YES_OPTION){
-            
-          DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
-          
-          if(jTable1.getSelectedRow()>=0){
-              modelo.removeRow(jTable1.getSelectedRow());
-              jTable1.setModel(modelo);
-          }
-          else{
-              JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
-          }
+        if (response == JOptionPane.YES_OPTION) {
+        
+        
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            if (jTable1.getSelectedRow() >= 0){
+                 
+            try
+            {
+                Connection con=(Connection)DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root",""); 
+                Statement stmt=(Statement)con.createStatement();
+
+                String delete="DELETE FROM cadastro WHERE codigo="+
+                jTable1.getModel().getValueAt(jTable1.getSelectedRow(),0)+";";  
+                stmt.executeUpdate(delete);
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage() ,"Error", 1);
+            }        
+        
+            this.Lista();     
+              
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
+            }
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         // TODO add your handling code here:
         
-        
+        this.Lista();
     }//GEN-LAST:event_btnListarActionPerformed
 
     /**
