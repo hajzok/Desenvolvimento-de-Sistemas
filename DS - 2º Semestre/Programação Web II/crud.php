@@ -6,7 +6,9 @@
 <body>
 
 <div class="w3-container w3-display-middle">
+<form action="" method="post" class="w3-xlarge">
 Busca: <input type="text" name="busca" class=""> <input type="submit" value="Enviar" class="w3-button">
+</form>
 <a href="cadastro.php" class="w3-button w3-blue w3-right">Novo</a>
 <br><br>
 <table class="w3-table-all w3-bordered w3-striped w3-border" style="color:#000">
