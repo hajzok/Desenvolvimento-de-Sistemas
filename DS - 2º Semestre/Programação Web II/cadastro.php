@@ -21,12 +21,12 @@
       </tr>
       <tr>
         <td>Preço:</td>
-        <td><input type="number" name="preco" required></td>
+        <td><input type="number" step="0.01" name="preco" required></td>
       </tr>
       <tr>
         <td>
           <br>
-          <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large">Cadastrar</button></td>
+          <input type="submit" value="cadastrar" class="w3-button w3-green w3-large"></td>
         <td align="right">
           <br>
           <a href="crud.php" class="w3-button w3-red w3-large">Voltar ao Início</a></td>
@@ -34,7 +34,7 @@
     </table>
   </form>
 <?php
-  if(isset($_POST["nome"])){
+  if(isset($_POST["produto"])){
 
     $produto = $_POST["produto"];
     $quantidade = $_POST["quantidade"];
@@ -46,6 +46,8 @@
       die("A conexão falhou!");
     }
 
+    $query;
+	  
     $query = mysqli_query($conexao,"INSERT INTO produtos(produto,quantidade,preco) VALUES('$produto','$quantidade','$preco')");
 
     if($query == true){
