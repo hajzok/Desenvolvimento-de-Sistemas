@@ -18,6 +18,7 @@ Busca: <input type="text" name="busca" class=""> <input type="submit" value="Env
       <th>Ação</th>
     </tr>
     </tbody><tbody>
+    <tr>
     <?php
 
 $conexao = mysqli_connect("localhost","aluno","aluno.etec","teste");
@@ -26,6 +27,7 @@ if($conexao == false){
   die("A conexão falhou!");
 }
 
+  $query;
 
 if(isset($_POST["busca"]) == true){
 		  $query = mysqli_query($conexao,"SELECT * from produtos WHERE produto LIKE '%" . $_POST["busca"] . "%'");
@@ -38,13 +40,22 @@ if(isset($_POST["busca"]) == true){
 		  
 		  echo "Sem resultados a exibir";
 	  }
-    
-    echo "<tr>";
-    echo "    <td>".$linha["codigo"]."</td>";
-    echo "  <td>".$linha["produto"]."</td>";
-    echo "  <td>".$linha["quantidade"]."</td>";
-    echo "  <td>".$linha["preco"]."</td></tr>";
+	  else{
+		  echo "Mostrando " . mysql_num_rows($query) . "resultados <br><br>";
+		  while($linha = mysql_fetch_array($query)){
+    			 echo "<tr>";
+   			 echo "    <td>".$linha["codigo"]."</td>";
+   			 echo "  <td>".$linha["produto"]."</td>";
+    			 echo "  <td>".$linha["quantidade"]."</td>";
+    			 echo "  <td>".$linha["preco"]."</td>";
+			 echo "<td> <a href='./editar.php?cod=".$linha["Cod"] ."'class='w3-button w3-orange'>Editar</a> 
+                           <a href='./excluir.php?cod=".$linha["Cod"]. "' class='w3-button w3-red'>Excluir</a></td>'";
+			 echo "</tr>";
+		  }
+		  echo "</table>";
+	  }
     ?>
+    </tr>
     </tbody>
     </table>
 </div>
