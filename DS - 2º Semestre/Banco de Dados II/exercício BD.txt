@@ -1,0 +1,17 @@
+1) 
+
+2) 
+
+3) SELECT id, clinome
+FROM notafiscal
+INNER JOIN cliente
+ON notafiscal.cliente_id = cliente.id
+INNER JOIN notadetalhe
+ON notadetalhe.idnotafiscal = notafiscal.id
+SELECT SUM(valorunitario) FROM notadetalhe
+
+4) 
+
+5) 
+
+6) 
