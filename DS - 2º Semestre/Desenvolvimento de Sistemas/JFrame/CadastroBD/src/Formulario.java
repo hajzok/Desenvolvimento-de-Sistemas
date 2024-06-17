@@ -1,4 +1,3 @@
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.mysql.jdbc.Connection;
