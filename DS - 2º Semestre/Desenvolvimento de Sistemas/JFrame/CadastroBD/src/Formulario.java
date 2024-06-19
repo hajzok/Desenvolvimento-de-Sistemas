@@ -118,6 +118,12 @@ public class Formulario extends javax.swing.JFrame {
 
         lblTelefone.setText("Telefone");
 
+        edtTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtTelefoneActionPerformed(evt);
+            }
+        });
+
         lblEmail.setText("E-mail");
 
         btnLimpar.setText("Limpar");
@@ -347,6 +353,10 @@ public class Formulario extends javax.swing.JFrame {
         
         this.Lista();
     }//GEN-LAST:event_btnListarActionPerformed
+
+    private void edtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtTelefoneActionPerformed
 
     /**
      * @param args the command line arguments
