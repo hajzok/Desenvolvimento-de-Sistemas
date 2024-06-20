@@ -5,18 +5,24 @@ INNER JOIN notadetalhe ON (produto.ID = notadetalhe.IDPRODUTO)
 WHERE valorunitario > (SELECT AVG(valorunitario) FROM notadetalhe)
 
 2) SELECT notaemissao, clinome, clitelefone
-FROM  notafiscal
-INNER JOIN cliente ON (cliente.ID = notafiscal.IDCLIENTE)
-WHERE clinome NOT LIKE 'Carlos%' AND clitelefone = NULL
-
-3) SELECT id, clinome
 FROM notafiscal
-INNER JOIN cliente ON (notafiscal.cliente_id = cliente.id)
-INNER JOIN notadetalhe ON notadetalhe.idnotafiscal = notafiscal.id
-SELECT SUM(valorunitario) FROM notadetalhe
+INNER JOIN cliente ON (cliente.ID = notafiscal.IDCLIENTE)
+WHERE clinome NOT LIKE "Carlos%"
+AND clitelefone IS NULL
 
-4) 
+3) SELECT clinome AS "Nome_Cliente", valorunitario AS "Valor_Total"
+FROM cliente INNER JOIN notafiscal ON (notafiscal.IDCLIENTE = cliente.ID)
+INNER JOIN notadetalhe ON (notadetalhe.IDNOTAFISCAL = notafiscal.ID)
+WHERE (SELECT SUM(quantidade) * valorunitario);
 
-5) 
+4) SELECT MAX(quantidade) AS "Quantidade", pronome AS "Nome_Produto"
+FROM notadetalhe
+INNER JOIN produto ON (produto.ID = notadetalhe.IDPRODUTO)
+
+5)
+108 Cliente #1 
+112 Cliente #5
+115 Cliente #8
+114 Cliente #7
 
 6) 
