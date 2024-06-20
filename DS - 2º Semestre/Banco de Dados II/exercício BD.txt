@@ -23,15 +23,7 @@ INNER JOIN produto ON (produto.ID = notadetalhe.IDPRODUTO)
 FROM CLIENTE
 WHERE ID NOT IN (SELECT IDCLIENTE FROM NOTAFISCAL);
 
-6) Liste o valor total da maior nota emitida e o nome do respectivo cliente.
-
-SELECT valorunitario AS "Valor_Total", clinome ASA "Nome_Cliente"
-FROM notadetalhe
-INNER JOIN notafiscal ON (notafiscal.id = notadetalhe.idnotafiscal)
-INNER JOIN cliente ON (cliente.id = notafiscal.cliente_id)
-WHERE (SELECT MAX(valorunitatio * quantidade))
-
-SELECT notafiscal.id, cliente.clinome AS "Nome_Cliente", SUM(ND.QUANTIDADE * notadetalhe.valorunitario) AS "Valor_Total"
+6) SELECT notafiscal.id, cliente.clinome AS "Nome_Cliente", SUM(ND.QUANTIDADE * notadetalhe.valorunitario) AS "Valor_Total"
 FROM NOTAFISCAL
 INNER JOIN NOTADETALHE ON notafiscal.id = notadetalhe.idnotafiscal
 INNER JOIN CLIENTE ON notafiscal.id_cliente = cliente.id
