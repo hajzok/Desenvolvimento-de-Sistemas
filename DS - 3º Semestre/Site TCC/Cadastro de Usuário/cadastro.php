@@ -7,8 +7,8 @@
 <body>
 
 <div class="w3-container w3-display-middle">
-  <h2>Cadastro de Acesso ao Tesouro</h2>
-	
+  <center><h2>Cadastro</h2></center>
+	<br>
   <form action="" method="post" class="w3-xlarge">
     <table>
       <tr>
@@ -38,13 +38,14 @@
     </table>
   </form>
 <?php
-  if(isset($_POST["produto"])){
+  if(isset($_POST["nome"])){
 
-    $produto = $_POST["produto"];
-    $quantidade = $_POST["quantidade"];
-    $preco = $_POST["preco"];
+    $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+    $confirmar_senha = $_POST["confirmar_senha"];
 
-    $conexao = mysqli_connect("localhost","root","","produtos");
+    $conexao = mysqli_connect("localhost","root","","usuario");
       
     if($conexao == false){
       die("A conexão falhou!");
@@ -52,7 +53,7 @@
 
     $query;
 	  
-    $query = mysqli_query($conexao,"INSERT INTO produtos(produto,quantidade,preco) VALUES('$produto','$quantidade','$preco')");
+    $query = mysqli_query($conexao,"INSERT INTO usuario(nome,senha,email) VALUES('$nome','$senha','$email')");
 
     if($query == true){
       header("Location:crud.php");	

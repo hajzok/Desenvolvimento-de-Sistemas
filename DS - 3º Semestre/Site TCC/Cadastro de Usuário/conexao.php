@@ -15,10 +15,10 @@
 	  $query;
 	  
 	  if(isset($_POST["busca"]) == true){
-		  $query = mysqli_query($conexao,"SELECT * from cursos WHERE curso LIKE '%" . $_POST["busca"] . "%'");
+		  $query = mysqli_query($conexao,"SELECT * from usuario WHERE nome LIKE '%" . $_POST["busca"] . "%'");
 	  }
 	  else{
-		  $query = mysqli_query($conexao,"SELECT * from cursos");
+		  $query = mysqli_query($conexao,"SELECT * from nome");
 	  }
 
 	  if(mysqli_num_rows($query) == 0){
@@ -30,7 +30,7 @@
 		echo "<table border=1 width=300><tr><th>COD.</th><th>CURSO</th><th>VAGAS</th></tr>";
 
 		while($linha = mysqli_fetch_array($query)){
-			echo "<tr><td>".$linha["cod"]."</td><td>".$linha["curso"]."</td><td>".$linha["vagas"]."</td></tr>";
+			echo "<tr><td>".$linha["cod"]."</td><td>".$linha["nome"]."</td><td>".$linha["email"]."</td></tr>";
 		}
 
 		echo "</table>";  

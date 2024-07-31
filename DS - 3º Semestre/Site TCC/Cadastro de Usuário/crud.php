@@ -14,10 +14,8 @@ Busca: <input type="text" name="busca" class=""> <input type="submit" value="Env
 <table class="w3-table-all w3-bordered w3-striped w3-border" style="color:#000">
     <tbody><tr class="w3-green">
         <th>Código</th>
-        <th>Produto</th>
-      <th>Quantidade</th>
-      <th>Preço</th>
-      <th>Ação</th>
+        <th>Nome</th>
+      <th>Email</th>
     </tr>
     </tbody><tbody>
     <tr>
@@ -32,10 +30,10 @@ if($conexao == false){
   $query;
 
 if(isset($_POST["busca"]) == true){
-		  $query = mysqli_query($conexao,"SELECT * from produtos WHERE produto LIKE '%" . $_POST["busca"] . "%'");
+		  $query = mysqli_query($conexao,"SELECT * from usuario WHERE nome LIKE '%" . $_POST["busca"] . "%'");
 	  }
 	  else{
-		  $query = mysqli_query($conexao,"SELECT * from produtos");
+		  $query = mysqli_query($conexao,"SELECT * from usuario");
 	  }
 
 	  if(mysqli_num_rows($query) == 0){
@@ -45,16 +43,16 @@ if(isset($_POST["busca"]) == true){
 	  else{
 		  echo "Mostrando " . mysql_num_rows($query) . "resultados <br><br>";
 		  while($linha = mysql_fetch_array($query)){
-    			 echo "<tr>";
-   			 echo "    <td>".$linha["codigo"]."</td>";
-   			 echo "  <td>".$linha["produto"]."</td>";
-    			 echo "  <td>".$linha["quantidade"]."</td>";
-    			 echo "  <td>".$linha["preco"]."</td>";
-			 echo "<td> <a href='./editar.php?cod=".$linha["Cod"] ."'class='w3-button w3-orange'>Editar</a> 
-                           <a href='./excluir.php?cod=".$linha["Cod"]. "' class='w3-button w3-red'>Excluir</a></td>'";
-			 echo "</tr>";
+    		echo "<tr>";
+   			echo "    <td>".$linha["codigo"]."</td>";
+   			echo "  <td>".$linha["nome"]."</td>";
+    		echo "  <td>".$linha["senha"]."</td>";
+    		echo "  <td>".$linha["email"]."</td>";
+			echo "<td> <a href='./editar.php?cod=".$linha["Cod"] ."'class='w3-button w3-orange'>Editar</a> 
+            <a href='./excluir.php?cod=".$linha["Cod"]. "' class='w3-button w3-red'>Excluir</a></td>'";
+			echo "</tr>";
 		  }
-		  echo "</table>";
+		  	echo "</table>";
 	  }
     ?>
     </tr>
