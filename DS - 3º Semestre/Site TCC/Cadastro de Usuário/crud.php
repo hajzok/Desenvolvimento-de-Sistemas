@@ -41,18 +41,18 @@ if(isset($_POST["busca"]) == true){
 		  echo "Sem resultados a exibir";
 	  }
 	  else{
-		  echo "Mostrando " . mysql_num_rows($query) . "resultados <br><br>";
-		  while($linha = mysql_fetch_array($query)){
+		echo "Mostrando " . mysql_num_rows($query) . "resultados <br><br>";
+	while($linha = mysql_fetch_array($query)){
     		echo "<tr>";
-   			echo "    <td>".$linha["codigo"]."</td>";
-   			echo "  <td>".$linha["nome"]."</td>";
+   		echo "    <td>".$linha["codigo"]."</td>";
+   		echo "  <td>".$linha["nome"]."</td>";
     		echo "  <td>".$linha["senha"]."</td>";
-    		echo "  <td>".$linha["email"]."</td>";
-			echo "<td> <a href='./editar.php?cod=".$linha["Cod"] ."'class='w3-button w3-orange'>Editar</a> 
-            <a href='./excluir.php?cod=".$linha["Cod"]. "' class='w3-button w3-red'>Excluir</a></td>'";
-			echo "</tr>";
-		  }
-		  	echo "</table>";
+		echo "  <td>".$linha["email"]."</td>";
+		echo "<td> <a href='./editar.php?cod=".$linha["Cod"] ."'class='w3-button w3-orange'>Editar</a> 
+            		<a href='./excluir.php?cod=".$linha["Cod"]. "' class='w3-button w3-red'>Excluir</a></td>'";
+		echo "</tr>";
+	}
+		  echo "</table>";
 	  }
     ?>
     </tr>
