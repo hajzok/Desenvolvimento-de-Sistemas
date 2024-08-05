@@ -30,7 +30,7 @@
 		echo "<table border=1 width=300><tr><th>COD.</th><th>CURSO</th><th>VAGAS</th></tr>";
 
 		while($linha = mysqli_fetch_array($query)){
-			echo "<tr><td>".$linha["cod"]."</td><td>".$linha["nome"]."</td><td>".$linha["email"]."</td></tr>";
+			echo "<tr><td>".$linha["nome"]."</td><td>".$linha["email"]."</td><td>".$linha["senha"]."</td></tr>";
 		}
 
 		echo "</table>";  
