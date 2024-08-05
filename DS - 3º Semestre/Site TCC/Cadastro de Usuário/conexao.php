@@ -18,7 +18,7 @@
 		  $query = mysqli_query($conexao,"SELECT * from usuario WHERE nome LIKE '%" . $_POST["busca"] . "%'");
 	  }
 	  else{
-		  $query = mysqli_query($conexao,"SELECT * from nome");
+		  $query = mysqli_query($conexao,"SELECT * from usuario");
 	  }
 
 	  if(mysqli_num_rows($query) == 0){
