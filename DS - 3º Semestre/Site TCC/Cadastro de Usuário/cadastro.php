@@ -65,15 +65,13 @@
                 exit();
             }
 
-            $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-
             $conexao = mysqli_connect("localhost", "aluno", "aluno.etec", "usuario");
 
             if($conexao == false){
                 die("A conexão falhou: " . mysqli_connect_error());
             }
 
-            $query = mysqli_query($conexao, "INSERT INTO usuarios (nome, apelido, data_nasc, email, senha) VALUES ('$nome','$apelido','$dt_nasc', '$email', '$senha_hash')");
+            $query = mysqli_query($conexao, "INSERT INTO usuarios (nome, apelido, data_nasc, email, senha) VALUES ('$nome','$apelido','$dt_nasc', '$email', '$senha')");
 
             if($query){
                 header("Location: login.php");
