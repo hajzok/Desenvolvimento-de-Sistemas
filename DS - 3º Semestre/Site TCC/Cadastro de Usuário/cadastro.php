@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <td>Selecione sua data de nascimento:</td>
-                <td><input type="date" name="dt_nasc" /></td>
+                <td><input type="date" name="data_nasc" /></td>
             </tr>
             <tr>
               <td>
@@ -58,20 +58,20 @@
             $apelido = $_POST["apelido"];
             $senha = $_POST["senha"];
             $confirma_senha = $_POST["confirma_senha"];
-            $dt_nasc = $_POST["dt_nasc"];
+            $data_nasc = $_POST["data_nasc"];
 
             if ($senha !== $confirma_senha) {
                 echo "As senhas não coincidem!";
                 exit();
             }
 
-            $conexao = mysqli_connect("localhost", "aluno", "aluno.etec", "usuario");
+            $conexao = mysqli_connect("localhost", "root", "", "usuario");
 
             if($conexao == false){
                 die("A conexão falhou: " . mysqli_connect_error());
             }
 
-            $query = mysqli_query($conexao, "INSERT INTO usuarios (nome, apelido, data_nasc, email, senha) VALUES ('$nome','$apelido','$dt_nasc', '$email', '$senha')");
+            $query = mysqli_query($conexao, "INSERT INTO usuarios (nome, apelido, data_nasc, email, senha) VALUES ('$nome','$apelido','$data_nasc', '$email', '$senha')");
 
             if($query){
                 header("Location: login.php");
