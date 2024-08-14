@@ -33,7 +33,7 @@
 
             $email = $_POST["email"];
 
-            $conexao = mysqli_connect("localhost", "root", "", "usuario");
+            $conexao = mysqli_connect("localhost", "aluno", "aluno.etec", "usuario");
 
             if ($conexao == false) {
                 die("A conexão falhou: " . mysqli_connect_error());
