@@ -17,11 +17,19 @@
                 <td>E-mail:</td>
                 <td><input type="email" name="email" required></td>
             </tr>
+            <tr>
+                <td>Senha:</td>
+                <td><input type="password" name="senha" required></td>
+            </tr>
+            <tr>
+                <td>Confirmar senha:</td>
+                <td><input type="password" name="confirmar_senha" required></td>
+            </tr>
           </table>
         <tr>
                 <td colspan="2">
                     <br>
-                    <button type="submit" class="w3-button w3-green w3-large">Verificar E-mail</button>
+                    <button type="submit" class="w3-button w3-green w3-large">Alterar senha</button>
                 </td>
             </tr>
           </table>
@@ -31,7 +39,14 @@
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+            $senha = $_POST["senha"];
+            $confirma_senha = $_POST["confirmar_senha"];
             $email = $_POST["email"];
+
+            if ($senha !== $confirma_senha) {
+                echo "As senhas não coincidem!";
+                exit();
+            }
 
             $conexao = mysqli_connect("localhost", "aluno", "aluno.etec", "usuario");
 
@@ -41,12 +56,14 @@
 
             $query = mysqli_query($conexao, "SELECT * FROM usuarios WHERE email = '$email'");
 
-            if (mysqli_num_rows($query) > 0) {
-                header("Location: novaSenha.php");
-                exit();
-            } else {
+            if (mysqli_num_rows($query) < 1) {
                 echo "<p style='color:red;'>O e-mail não foi encontrado.</p>";
                 echo "<a href='cadastro.php'>Cadastre-se!</a>";
+            }
+            else{
+                $query1 = mysqli_query($conexao, "UPDATE usuarios SET senha = '$senha' WHERE email = '$email'");
+                header("Location: login.php");
+                exit();
             }
         }
         ?>
