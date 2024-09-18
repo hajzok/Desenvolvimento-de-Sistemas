@@ -1,0 +1,202 @@
+db.livros.insertMany([
+{
+_id: 01,
+titulo_livro: 'Harry Potter e a Pedra Filosofal',
+nome_autor: 'J. K. Rowling',
+ano_lancamento: 1997,
+editora: 'Rocco',
+qtd_paginas: 208,
+valor_mercado: '40.99',
+genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
+},
+{
+_id: 02,
+titulo_livro: 'Harry Potter e a Câmara Secreta',
+nome_autor: 'J. K. Rowling',
+ano_lancamento: 1998,
+editora: 'Rocco',
+qtd_paginas: 272,
+valor_mercado: '46.10',
+genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
+},
+{
+_id: 03,
+titulo_livro: 'Harry Potter e o Prisioneiro de Azkaban',
+nome_autor: 'J. K. Rowling',
+ano_lancamento: 2004,
+editora: 'Rocco',
+qtd_paginas: 288,
+valor_mercado: '55.90',
+genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
+},
+{
+_id: 04,
+titulo_livro: 'Harry Potter e o Cálice de Fogo',
+nome_autor: 'J. K. Rowling',
+ano_lancamento: 2005,
+editora: 'Rocco',
+qtd_paginas: 480,
+valor_mercado: '55.90',
+genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
+},
+{
+_id: 05,
+titulo_livro: 'Harry Potter e a Ordem da Fênix',
+nome_autor: 'J. K. Rowling',
+ano_lancamento: 2007,
+editora: 'Rocco',
+qtd_paginas: 640,
+valor_mercado: '41,99',
+genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
+},
+{
+_id: 06,
+titulo_livro: 'Harry Potter e o Enigma do Príncipe',
+nome_autor: 'J. K. Rowling',
+ano_lancamento: 2009,
+editora: 'Rocco',
+qtd_paginas: 432,
+valor_mercado: '63.99',
+genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
+},
+{
+_id: 07,
+titulo_livro: 'Harry Potter e as Relíquias da Morte',
+nome_autor: 'J. K. Rowling',
+ano_lancamento: 2010,
+editora: 'Rocco',
+qtd_paginas: 512,
+valor_mercado: '74.59',
+genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
+},
+{
+_id: 08,
+titulo_livro: 'Alice Através do Espelho(Classic Edition)',
+nome_autor: 'Lewis Carroll',
+ano_lancamento: 2021,
+editora: 'Darkside',
+qtd_paginas: 192,
+valor_mercado: '74.59',
+genero: 'Literatura e Ficção'
+},
+{
+_id: 09,
+titulo_livro: 'The X-Files: Origens - Agente do caos',
+nome_autor: 'Kami Garcia',
+ano_lancamento: 2017,
+editora: 'HarperCollins',
+qtd_paginas: 320,
+valor_mercado: '74.59',
+genero: 'Ação e Aventura Infantil e Infantojuvenil'
+},
+{
+_id: 10,
+titulo_livro: 'Sobrevivendo no inferno',
+nome_autor: 'Racionais Mc's',
+ano_lancamento: 2018,
+editora: 'Companhia das Letras',
+qtd_paginas: 160,
+valor_mercado: '38.28',
+genero: 'Livros de Referência da Música'
+},
+{
+_id: 11,
+titulo_livro: 'Não é amor',
+nome_autor: 'Thaís Britto',
+ano_lancamento: 2024,
+editora: 'Editora Arqueiro',
+qtd_paginas: 368,
+valor_mercado: '48.82',
+genero: 'Ficção Literária Literatura e Ficção'
+},
+{
+_id: 12,
+titulo_livro: 'Noiva',
+nome_autor: 'Raquel Zampil',
+ano_lancamento: 2024,
+editora: 'Editora Arqueiro',
+qtd_paginas: 368,
+valor_mercado: '48.90',
+genero: 'Ficção em Erótico'
+},
+{
+_id: 13,
+titulo_livro: 'Coração de tinta',
+nome_autor: 'Cornelia Funke',
+ano_lancamento: 2006,
+editora: 'Seguinte',
+qtd_paginas: 456,
+valor_mercado: '47.80',
+genero: 'Livros de Literatura e Ficção para Adolescentes'
+},
+{
+_id: 14,
+titulo_livro: 'Jogos Vorazes',
+nome_autor: 'Suzanne Collins',
+ano_lancamento: 2006,
+editora: 'Rocco',
+qtd_paginas: 400,
+valor_mercado: '42.15',
+genero: 'Livros de Ficção Científica para Adolescentes'
+},
+{
+_id: 15,
+titulo_livro: 'Morte de tinta',
+nome_autor: 'Cornelia Funke',
+ano_lancamento: 2010,
+editora: 'Seguinte',
+qtd_paginas: 576,
+valor_mercado: '63.50',
+genero: 'Romance para Adolescentes: Fantasia'
+},
+{
+_id: 16,
+titulo_livro: 'O Pequeno Príncipe - Edição de Luxo Almofadada',
+nome_autor: 'Antonie de Saint-Exupéry',
+ano_lancamento: 2023,
+editora: 'Editora Garnier',
+qtd_paginas: 96,
+valor_mercado: '47.90',
+genero: 'Livros de Clássicos de Ação e Aventura'
+},
+{
+_id: 17,
+titulo_livro: 'O diário de Anne Frank',
+nome_autor: 'Anne Frank',
+ano_lancamento: 2020,
+editora: 'Principis',
+qtd_paginas: 224,
+valor_mercado: '42.15',
+genero: 'Biografias Militares'
+},
+{
+_id: 18,
+titulo_livro: 'O Senhor dos Anéis: A Sociedade do Anel',
+nome_autor: 'J.R.R Tolkien',
+ano_lancamento: 2019,
+editora: 'HarperCollins',
+qtd_paginas: 576,
+valor_mercado: '60.33',
+genero: 'Livros de Clássicos de Ação e Aventura'
+},
+{
+_id: 19,
+titulo_livro: 'O Senhor dos Anéis: O retorno do rei',
+nome_autor: 'J.R.R Tolkien',
+ano_lancamento: 2019,
+editora: 'HarperCollins',
+qtd_paginas: 528,
+valor_mercado: '52.43',
+genero: 'Livros de Clássicos de Ação e Aventura'
+},
+{
+_id: 120,
+titulo_livro: 'O Senhor dos Anéis: As duas torres',
+nome_autor: 'J.R.R Tolkien',
+ano_lancamento: 2019,
+editora: 'HarperCollins',
+qtd_paginas: 464,
+valor_mercado: '62.85',
+genero: 'Livros de Clássicos de Ação e Aventura'
+}
+]);
