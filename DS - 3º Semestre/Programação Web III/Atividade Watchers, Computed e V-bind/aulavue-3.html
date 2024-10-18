@@ -4,23 +4,23 @@
     <body style="text-align: center;">
         <div id="meuvue">
           
-            Numero 1: <input type="number" step="0.01" v-model="n1">
+            Numero 1: <input type="number" step="0.01" v-bind:class="cls" v-model="n1">
             <br><br>
-            Numero 2: <input type="number" step="0.01" v-model="n2">
+            Numero 2: <input type="number" step="0.01" v-bind:class="cls" v-model="n2">
             <br><br>
-            Numero 3: <input type="number" step="0.01" v-model="n3">
+            Numero 3: <input type="number" step="0.01" v-bind:class="cls" v-model="n3">
             <br><br>
-            Numero 4: <input type="number" step="0.01" v-model="n4">
+            Numero 4: <input type="number" step="0.01" v-bind:class="cls" v-model="n4">
 
             <br><br>
 
             <div v-if="media >= 0">
               <p> A sua média é: {{media.toFixed(1)}} </p>
 
-              <p v-if="media >= 0 && media <= 5" class="red">Insuficiente</p>
-              <p v-else-if="media > 5 && media <= 7" class="blue">Regular</p>
-              <p v-else-if="media > 7 && media < 9" class="green">Bom</p>
-              <p v-else class="green">Muito Bom</p>
+              <p v-if="media >= 0 && media <= 5" v-bind:class="Insuficiente">Insuficiente</p>
+              <p v-else-if="media > 5 && media <= 7" v-bind:class="Regular">Regular</p>
+              <p v-else-if="media > 7 && media < 9" v-bind:class="Bom">Bom</p>
+              <p v-else v-bind:class="MtBom">Muito Bom</p>
             </div>
 
         </div>
@@ -33,7 +33,11 @@
                   n1: 0,
                   n2: 0,
                   n3: 0,
-                  n4: 0
+                  n4: 0,
+                  Insuficiente: 'red',
+                  Regular: 'blue',
+                  Bom:'green',
+                  MtBom:'green'
                 }
               },
               computed:{
