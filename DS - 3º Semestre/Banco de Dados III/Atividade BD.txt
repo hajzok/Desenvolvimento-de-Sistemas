@@ -1,325 +1,201 @@
-Please enter a MongoDB connection string (Default: mongodb://localhost/): 27017
-27017
-Current Mongosh Log ID: 66ecc4b086e75c426fc73bf7
-Connecting to:          mongodb://127.0.0.1:27017/27017?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.1
-Using MongoDB:          7.0.6
-Using Mongosh:          2.3.1
+Selecionar a base de dados
+use plataforma;
 
-For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+Criar as coleções
+db.createCollection("Cursos");
+db.createCollection("Alunos");
+db.createCollection("Instrutores");
+db.createCollection("Inscricoes");
 
-------
-   The server generated these startup warnings when booting
-   2024-09-19T21:27:22.824-03:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-------
+Inserir dados na coleção "Cursos"
+db.Cursos.insertMany([
+    {
+        _id: 1,
+        titulo: "NoSQL para iniciantes",
+        descricao: "Aprenda NoSQL para aplicar em bancos de dados não relacionais",
+        categoria: "Banco de Dados",
+        cargaHoraria: 50,
+        instrutor: "Anderson"
+    },
+    {
+        _id: 2,
+        titulo: "SQLite Expo Snack",
+        descricao: "Aprenda a conectar o banco de dados no Expo Snack",
+        categoria: "Programação Mobile",
+        cargaHoraria: 60,
+        instrutor: "Fernando"
+    },
+    {
+        _id: 3,
+        titulo: "Trazer dados de uma API",
+        descricao: "Aprenda a conectar uma API e colocar as informações no seu próprio site",
+        categoria: "API",
+        cargaHoraria: 45,
+        instrutor: "Davi"
+    }
+]);
 
-27017> show dbs
-Mercado      8.00 KiB
-admin       40.00 KiB
-biblioteca   8.00 KiB
-config      72.00 KiB
-local       72.00 KiB
-27017> use biblioteca
-switched to db biblioteca
-biblioteca> show collection
-MongoshInvalidInputError: [COMMON-10001] 'collection' is not a valid argument for "show".
-biblioteca> show collections
-livros
-biblioteca> db.livros.insertOne([
-... {
-... _id: 01,
-... titulo_livro: 'Harry Potter e a Pedra Filosofal',
-... nome_autor: 'J. K. Rowling',
-... ano_lancamento: 1997,
-... editora: 'Rocco',
-... qtd_paginas: 208,
-... valor_mercado: '40.99',
-... genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
-... }])
+Inserir documentos na coleção "Alunos"
+db.Alunos.insertMany([
+    {
+        _id: 1,
+        nome: "Samuel",
+        email: "samuel@gmail.com",
+        cursosInscritos: ["Trazer dados de uma API"],
+        progresso: "75%"
+    },
+    {
+        _id: 2,
+        nome: "Vitor",
+        email: "vitor@gmail.com",
+        cursosInscritos: ["SQLite Expo Snack"],
+        progresso: "79%"
+    }
+]);
+
+Inserir documentos na coleção "Instrutores"
+db.Instrutores.insertMany([
+    {
+        _id: 1,
+        nome: "Anderson",
+        especialidade: "Banco de Dados",
+        cursosMinistrados: ["NoSQL para iniciantes"],
+        avaliacaoMedia: 9.5
+    },
+    {
+        _id: 2,
+        nome: "Davi",
+        especialidade: "Programação Web",
+        cursosMinistrados: ["Trazer dados de uma API"],
+        avaliacaoMedia: 9.4
+    },
+    {
+        _id: 3,
+        nome: "Fernando",
+        especialidade: "Programação Mobile",
+        cursosMinistrados: ["SQLite Expo Snack"],
+        avaliacaoMedia: 9.9
+    }
+]);
+
+Inserir documentos na coleção "Inscricoes"
+db.Inscricoes.insertMany([
+    {
+        _id: 1,
+        aluno: "Vitor",
+        curso: "SQLite Expo Snack",
+        dataInscricao: "2025-06-01",
+        status: "Ativo"
+    },
+    {
+        _id: 2,
+        aluno: "Samuel",
+        curso: "NoSQL para iniciantes",
+        dataInscricao: "2025-04-01",
+        status: "Ativo"
+    },
+    {
+        _id: 3,
+        aluno: "Pyethra",
+        curso: "Trazer dados de uma API",
+        dataInscricao: "2025-07-01",
+        status: "Concluído"
+    }
+]);
+
+Consultando os detalhes do curso
+db.Cursos.findOne({ titulo: "SQLite Expo Snack" });
+findOne: É usado para buscar um único documento que satisfaça a condição fornecida. Usei aqui porque você está procurando um único curso específico, com o título "SQLite Expo Snack".
+{ titulo: "SQLite Expo Snack" }: Este é o filtro que busca um curso com o título exato "SQLite Expo Snack". A consulta retorna o primeiro curso que corresponde a esse título.
+
+
+Consultando os alunos inscritos no curso
+db.Alunos.find({ cursosInscritos: "SQLite Expo Snack" });
+find: O find retorna múltiplos documentos. Usei porque você quer todos os alunos que estão inscritos no curso "SQLite Expo Snack".
+{ cursosInscritos: "SQLite Expo Snack" }: O filtro aqui é para verificar se o campo cursosInscritos de cada aluno contém o valor "SQLite Expo Snack". A consulta retorna todos os alunos que estão inscritos nesse curso.
+
+Consultando o instrutor responsável
+db.Instrutores.findOne({ nome: "Fernando" });
+findOne: Assim como no exemplo do curso, o findOne é utilizado porque você quer apenas um instrutor, o que é uma busca única.
+{ nome: "Fernando" }: A busca é feita pelo nome do instrutor, retornando o primeiro documento correspondente ao nome "Fernando".
+
+Consultando os alunos inscritos em um curso específico
+db.Alunos.find({ cursosInscritos: "SQLite Expo Snack" });
+find: Usado para retornar todos os alunos que estão inscritos no curso "SQLite Expo Snack"
+
+Consultando todos os cursos em que um aluno específico está inscrito e seu progresso em cada um.
+db.Alunos.findOne({ nome: "Vitor" }, 
+{ 
+_id: 0,
+nome: 1,
+cursosInscritos: 1,
+progresso: 1
+});
+findOne: A consulta é feita para encontrar um único aluno pelo nome.
+{ _id: 0, nome: 1, cursosInscritos: 1, progresso: 1 }: Esse filtro projeta os campos que você quer exibir. O campo _id é excluído (0), e os campos nome, cursosInscritos, e progresso são incluídos. Isso ajuda a retornar somente as informações necessárias sobre o aluno, sem sobrecarregar a consulta com dados desnecessários.
+
+Obtendo detalhes de um instrutor, incluindo cursos ministrados e avaliação média.
+db.Instrutores.findOne({ nome: "Fernando" },
 {
-  acknowledged: true,
-  insertedId: ObjectId('66ecc4e886e75c426fc73bf8')
-}
-... {
-... _id: 02,
-... titulo_livro: 'Harry Potter e a Câmara Secreta',
-... nome_autor: 'J. K. Rowling',
-... ano_lancamento: 1998,
-... editora: 'Rocco',
-... qtd_paginas: 272,
-... valor_mercado: '46.10',
-... genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
-... }])
+_id: 0,
+nome: 1,
+cursosMinistrados: 1,
+avaliacaoMedia: 1
+});
+findOne: Busca o primeiro instrutor que tenha o nome "Fernando".
+{ _id: 0, nome: 1, cursosMinistrados: 1, avaliacaoMedia: 1 }: Similar ao exemplo anterior, estamos projetando somente os campos necessários para exibir informações sobre o instrutor, o que torna a consulta mais eficiente.
+
+Atualizando informações do curso, como carga horária ou descrição.
+db.Cursos.updateOne({ titulo: "SQLite Expo Snack" },
+{ 
+$set:
+{ 
+descricao: "Aprenda a conectar o banco de dados no Expo Snack com foco em performance",  carga_Horaria: 70
+}});
+updateOne: Usado para atualizar um único documento (curso) que corresponde ao título "SQLite Expo Snack". A função atualiza apenas o primeiro curso encontrado que corresponde à condição.
+$set: O operador $set é usado para atualizar os campos específicos que você deseja modificar. Aqui, ele altera a descrição e a carga horária do curso.
+
+Atualizando dados de contato de um aluno.
+db.Aluno.updateOne({ nome: "Samuel" },
+{ 
+$set: { 
+email: "samuel.novoemail@gmail.com"
+}});
+updateOne: Assim como no exemplo anterior, o updateOne é utilizado porque queremos atualizar apenas um aluno específico (Samuel).
+$set: Usado para alterar o campo email do aluno para o novo valor fornecido.
+
+Alterando o progresso de um aluno em um curso (percentual concluído).
+db.Aluno.updateOne({ nome: "Samuel", cursos_Inscritos: "Trazer dados de uma API" },
 {
-  acknowledged: true,
-  insertedId: ObjectId('66ecc50e86e75c426fc73bf9')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 03,
-... titulo_livro: 'Harry Potter e o Prisioneiro de Azkaban',
-... nome_autor: 'J. K. Rowling',
-... ano_lancamento: 2004,
-... editora: 'Rocco',
-... qtd_paginas: 288,
-... valor_mercado: '55.90',
-... genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
-... }])
+$set: { progresso: "85%"}
+});
+updateOne: Atualiza o progresso de um aluno específico no curso "Trazer dados de uma API".
+$set: O operador $set é usado novamente para alterar o valor do campo progresso do aluno para "85%".
+
+Removendo um curso do catálogo (se nenhum aluno estiver inscrito).
+db.Cursos.deleteOne({ _id: 1, _id: { $nin: db.Inscricao.distinct("Curso") } });
+deleteOne: O deleteOne é utilizado para excluir um curso da coleção Cursos. Ele remove o primeiro curso que satisfaça a condição fornecida.
+$nin: O operador $nin verifica se o campo _id do curso não está na lista de cursos presentes na coleção Inscricao (usando distinct para pegar apenas os cursos).
+distinct("Curso"): Retorna todos os cursos distintos em que há inscrições. A consulta exclui o curso se ele não estiver presente.
+
+Excluindo alunos inativos (sem participação por mais de um ano).
+db.Aluno.deleteMany(
 {
-  acknowledged: true,
-  insertedId: ObjectId('66ecc58186e75c426fc73bfa')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 04,
-... titulo_livro: 'Harry Potter e o Cálice de Fogo',
-... nome_autor: 'J. K. Rowling',
-... ano_lancamento: 2005,
-... editora: 'Rocco',
-... qtd_paginas: 480,
-... valor_mercado: '55.90',
-... genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc58886e75c426fc73bfb')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 05,
-... titulo_livro: 'Harry Potter e a Ordem da Fênix',
-... nome_autor: 'J. K. Rowling',
-... ano_lancamento: 2007,
-... editora: 'Rocco',
-... qtd_paginas: 640,
-... valor_mercado: '41,99',
-... genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc58e86e75c426fc73bfc')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 06,
-... titulo_livro: 'Harry Potter e o Enigma do Príncipe',
-... nome_autor: 'J. K. Rowling',
-... ano_lancamento: 2009,
-... editora: 'Rocco',
-... qtd_paginas: 432,
-... valor_mercado: '63.99',
-... genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc59186e75c426fc73bfd')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 07,
-... titulo_livro: 'Harry Potter e as Relíquias da Morte',
-... nome_autor: 'J. K. Rowling',
-... ano_lancamento: 2010,
-... editora: 'Rocco',
-... qtd_paginas: 512,
-... valor_mercado: '74.59',
-... genero: 'Romance, Literatura infantil, Literatura fantástica, Alta fantasia'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc59586e75c426fc73bfe')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 08,
-... titulo_livro: 'Alice Através do Espelho(Classic Edition)',
-... nome_autor: 'Lewis Carroll',
-... ano_lancamento: 2021,
-... editora: 'Darkside',
-... qtd_paginas: 192,
-... valor_mercado: '74.59',
-... genero: 'Literatura e Ficção'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc59a86e75c426fc73bff')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 09,
-... titulo_livro: 'The X-Files: Origens - Agente do caos',
-... nome_autor: 'Kami Garcia',
-... ano_lancamento: 2017,
-... editora: 'HarperCollins',
-... qtd_paginas: 320,
-... valor_mercado: '74.59',
-... genero: 'Ação e Aventura Infantil e Infantojuvenil'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5a686e75c426fc73c00')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 10,
-... titulo_livro: 'Sobrevivendo no inferno',
-... nome_autor: 'Racionais Mcs',
-... ano_lancamento: 2018,
-... editora: 'Companhia das Letras',
-... qtd_paginas: 160,
-... valor_mercado: '38.28',
-... genero: 'Livros de Referência da Música'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5b586e75c426fc73c01')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 11,
-... titulo_livro: 'Não é amor',
-... nome_autor: 'Thaís Britto',
-... ano_lancamento: 2024,
-... editora: 'Editora Arqueiro',
-... qtd_paginas: 368,
-... valor_mercado: '48.82',
-... genero: 'Ficção Literária Literatura e Ficção'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5be86e75c426fc73c02')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 12,
-... titulo_livro: 'Noiva',
-... nome_autor: 'Raquel Zampil',
-... ano_lancamento: 2024,
-... editora: 'Editora Arqueiro',
-... qtd_paginas: 368,
-... valor_mercado: '48.90',
-... genero: 'Ficção em Erótico'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5c286e75c426fc73c03')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 13,
-... titulo_livro: 'Coração de tinta',
-... nome_autor: 'Cornelia Funke',
-... ano_lancamento: 2006,
-... editora: 'Seguinte',
-... qtd_paginas: 456,
-... valor_mercado: '47.80',
-... genero: 'Livros de Literatura e Ficção para Adolescentes'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5c586e75c426fc73c04')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 14,
-... titulo_livro: 'Jogos Vorazes',
-... nome_autor: 'Suzanne Collins',
-... ano_lancamento: 2006,
-... editora: 'Rocco',
-... qtd_paginas: 400,
-... valor_mercado: '42.15',
-... genero: 'Livros de Ficção Científica para Adolescentes'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5c986e75c426fc73c05')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 15,
-... titulo_livro: 'Morte de tinta',
-... nome_autor: 'Cornelia Funke',
-... ano_lancamento: 2010,
-... editora: 'Seguinte',
-... qtd_paginas: 576,
-... valor_mercado: '63.50',
-... genero: 'Romance para Adolescentes: Fantasia'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5d286e75c426fc73c06')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 16,
-... titulo_livro: 'O Pequeno Príncipe - Edição de Luxo Almofadada',
-... nome_autor: 'Antonie de Saint-Exupéry',
-... ano_lancamento: 2023,
-... editora: 'Editora Garnier',
-... qtd_paginas: 96,
-... valor_mercado: '47.90',
-... genero: 'Livros de Clássicos de Ação e Aventura'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5d686e75c426fc73c07')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 17,
-... titulo_livro: 'O diário de Anne Frank',
-... nome_autor: 'Anne Frank',
-... ano_lancamento: 2020,
-... editora: 'Principis',
-... qtd_paginas: 224,
-... valor_mercado: '42.15',
-... genero: 'Biografias Militares'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5da86e75c426fc73c08')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 18,
-... titulo_livro: 'O Senhor dos Anéis: A Sociedade do Anel',
-... nome_autor: 'J.R.R Tolkien',
-... ano_lancamento: 2019,
-... editora: 'HarperCollins',
-... qtd_paginas: 576,
-... valor_mercado: '60.33',
-... genero: 'Livros de Clássicos de Ação e Aventura'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5de86e75c426fc73c09')
-}
-biblioteca> db.livros.insertOne([
-... {
-... _id: 19,
-... titulo_livro: 'O Senhor dos Anéis: O retorno do rei',
-... nome_autor: 'J.R.R Tolkien',
-... ano_lancamento: 2019,
-... editora: 'HarperCollins',
-... qtd_paginas: 528,
-... valor_mercado: '52.43',
-... genero: 'Livros de Clássicos de Ação e Aventura'
-... }])
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5e286e75c426fc73c0a')
-}
-... {
-... _id: 20,
-... titulo_livro: 'O Senhor dos Anéis: As duas torres',
-... nome_autor: 'J.R.R Tolkien',
-... ano_lancamento: 2019,
-... editora: 'HarperCollins',
-... qtd_paginas: 464,
-... valor_mercado: '62.85',
-... genero: 'Livros de Clássicos de Ação e Aventura'
-... }
-... ]);
-{
-  acknowledged: true,
-  insertedId: ObjectId('66ecc5f786e75c426fc73c0b')
-}
+_id: {
+$nin: db.Inscricao.find({ dt_inscr: { $gte: new Date(“2023-11-18”) } }).map(inscricao => inscricao.Aluno)
+}});
+deleteMany: Usado para excluir múltiplos alunos.
+$nin: O operador $nin exclui os alunos que não estão nas inscrições feitas nos últimos 12 meses (a partir de 2023-11-18).
+map(inscricao => inscricao.Aluno): Extrai os alunos das inscrições válidas, com data de inscrição recente.
+
+Removendo instrutores que não ministram mais cursos.
+db.Instrutor.deleteMany({
+Cursos_Ministrados: { $size: 0 }
+});
+deleteMany: Remove todos os instrutores que não têm cursos ministrados.
+$size: 0: Esse operador verifica se o campo Cursos_Ministrados tem tamanho 0, ou seja, o instrutor não ministra nenhum curso.
+
+Listando instrutores com as melhores avaliações.
+db.Instrutor.find().sort({ Avaliacao_Media: -1 });
+find: Retorna todos os instrutores na coleção.
+sort({ Avaliacao_Media: -1 }): A função sort ordena os instrutores com base na avaliação média, de forma decrescente (-1).
